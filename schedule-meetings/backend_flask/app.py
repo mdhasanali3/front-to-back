@@ -105,31 +105,46 @@ def signup_post():
 
 @app.route('/', methods=["GET"], strict_slashes=False)
 def index():
+    my_id=[]
     my_dict = []
     my_dict_des = []
     my_dict_list = {}
+
+    ids = [item.id for item in meetups.query.all()]
+    for id_item in ids:
+        my_id.append(id_item)
+    my_dict_list["id"] = my_id
+
     titles = [item.title for item in meetups.query.all()]
     for title_item in titles:
         my_dict.append(title_item)
-    my_dict_list["Title"] = my_dict
+    my_dict_list["title"] = my_dict
 
     description = [item.description for item in meetups.query.all()]
     for des_item in description:
         my_dict_des.append(des_item)
     my_dict_list["description"] = my_dict_des
+
     print(my_dict_list," from flak app ")
     return jsonify(my_dict_list)
 #     return render_template('index.html', meetups = meetups.query.all())
 
 @app.route('/meetup_all')
 def meetup_all():
+    my_id=[]
     my_dict = []
     my_dict_des = []
     my_dict_list = {}
+
+    ids = [item.id for item in meetups.query.all()]
+    for id_item in ids:
+        my_id.append(id_item)
+    my_dict_list["id"] = my_id
+
     titles = [item.title for item in meetups.query.all()]
     for title_item in titles:
         my_dict.append(title_item)
-    my_dict_list["Title"] = my_dict
+    my_dict_list["title"] = my_dict
 
     description = [item.description for item in meetups.query.all()]
     for des_item in description:
@@ -142,11 +157,16 @@ def meetup_all():
 
 @app.route('/meetup/<int:id>', methods=["GET"], strict_slashes=False)
 def meetup_all_id(id):
+    item_id = [item.id for item in meetups.query.filter_by(id=id)]
     item_id_list = [item.title for item in meetups.query.filter_by(id=id)]
     des_id_list = [item.description for item in meetups.query.filter_by(id=id)]
+    my_id=[]
     my_dict = []
     my_dict_des = []
     my_dict_list = {}
+
+    my_id.append(item_id)
+
     # for item in item_id_list:
     #     print(item) 
     my_dict.append(item_id_list)
@@ -155,8 +175,8 @@ def meetup_all_id(id):
     my_dict_des.append(des_id_list)
 
     # des = "Title:"+ " " + item + ", " + "Description:" + " "+ desItem
-    
-    my_dict_list["Title"] = my_dict
+    my_dict_list["id"] = my_id
+    my_dict_list["title"] = my_dict
     my_dict_list["description"] = my_dict_des
     print("from flask   ",my_dict_list)
     return jsonify(my_dict_list)
@@ -167,15 +187,18 @@ def meetup_all_id(id):
 def add_meetups():
     return render_template('add_meeting.html')
 
-@app.route('/add_meetups', methods=['POST'])
+@app.route('/', methods=['POST'])
 def add_meetups_post():
-    title = request.form.get('title')
-    description = request.form.get('description')
+    meet_json = request.get_json()
+    title = meet_json['title']
+    description = meet_json['description']
 
     new_meeting = meetups(title = title, description = description)
     db.session.add(new_meeting)
     db.session.commit()
-    return render_template('index.html', meetups = meetups.query.all())
+    print("from app title ",title)
+    print("from app desc  ",description)
+    return jsonify("done from flask meeting added")
 
 @app.route('/meetup-details')
 def meetup_details():

@@ -1,7 +1,7 @@
 import { ActionTypes } from "../constant/constant"
 
 const in_state={
-    meetings:[  ]
+    meetings:{},
 }
 
 export const mreducers=(state=in_state,{type, payload})=>

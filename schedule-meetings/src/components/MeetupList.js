@@ -1,30 +1,31 @@
+// import React, { useEffect, useCallback, useMemo } from "react";
+// import axios from "axios";
+// import { useDispatch, useSelector } from "react-redux";
+// import { setMeeting } from "../store/actions/mactions";
+// import MeetupComponent from "./MeetupComponent";
 
-import React from "react"
-import { useSelector } from "react-redux"
+// const MeetingPage = () => {
+//   const meetings = useSelector((state) => state.allmeetings.meetings);
+//   const dispatch = useDispatch();
+//   const fetchmeetings = async () => {
+//     const response = await axios
+//       .get("http://localhost:5000/")
+//       .catch((err) => {
+//         console.log("Err: ", err);
+//       });
+//     dispatch(setMeeting(response.data));
+//   };
 
- const MeetupList = (props) =>{
+//   useEffect(() => {
+//     fetchmeetings();
+//   }, []);
 
-// const meeting= useSelector((state)=>state)
+//   console.log("meetings :", meetings);
+//   return (
+//     <div className="ui grid container">
+//       <MeetupComponent />
+//     </div>
+//   );
+// };
 
-// const renderlist=meeting.map((meeting)=>{
-// const {title,desc}=meeting
-
-// return(
-//     <>
-//     <h3>{title}</h3>
-//     <p> {desc} </p>
-//     </> 
-
-// )
- 
-
-// })
-
-return (
-<>
-<h3>{props.title}</h3>
-   <p> {props.description} </p>
-   </>
-)
-}
-export default MeetupList
+// export default MeetingPage;

@@ -7,18 +7,23 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import {Provider} from 'react-redux';
 import store from './store/index';
-// import Meetups from './components/meetups'
-import Meetupid from './components/meetupid';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
+     <header id="main-header">
+        
+        <nav><a href="" id="main-logo">Flask meetups</a></nav><h1></h1>
+        
+     <p>Find the one that best suits your needs</p>
+
+    </header>
   <BrowserRouter>
   <Routes>
 
     
   <Route path='/' element= {<App /> }/>
-  <Route path="/meetup /:id" element= {<Meetupid /> }/>
+  {/* <Route path="/meetup /:id" element= {<Meetupid /> }/> */}
         {/* <Route path='/login' element= {<Login/>}/> */}
 
            
