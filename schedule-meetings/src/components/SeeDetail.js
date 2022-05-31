@@ -4,7 +4,8 @@ import { useSelector ,useDispatch } from "react-redux";
 
 export const SeeDetail = (props) => {
  let meetings = useSelector((state) => state.allmeeting.meetings);
-    const [toggle_details,setToggle_details] = useState(false);
+   
+ const [toggle_details,setToggle_details] = useState(false);
 
   const onDetailsBtnClick = () =>{
     setToggle_details(!toggle_details);
