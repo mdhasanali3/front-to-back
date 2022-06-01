@@ -27,10 +27,8 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install flake8 pytest
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-        pip install flask
-        pip install -U flask-cors
-        pip install requests
+        if [ -f requirements.txt ]; then pip install --force-reinstall -r requirements.txt; fi
+        
     - name: Test with pytest
       run: |
         python ./schedule-meetings/backend_flask/pytest.py
