@@ -1,5 +1,5 @@
 from sqlite3 import Cursor
-from flask import Flask, Blueprint, jsonify, request, flash, url_for, redirect, render_template
+from flask import Blueprint, jsonify, request, flash, url_for, redirect, render_template
 from flask_cors import CORS
 from requests import post
 from sqlalchemy import desc, false
@@ -8,9 +8,9 @@ from flask_login import UserMixin, LoginManager, login_user
 from flask_sqlalchemy import SQLAlchemy
 from flask_swagger_ui import get_swaggerui_blueprint
 import json
-
-
-app = Flask(__name__)
+from flask import Flask as flask
+ 
+app = flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///meetup.sqlite3'
 app.config['SECRET_KEY'] = "random string"
 db = SQLAlchemy(app)
