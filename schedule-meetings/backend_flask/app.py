@@ -210,6 +210,9 @@ def meetup_details():
     for item in description:
         description = item
     return render_template('meetup-details.html', title = title, description = description)
+def test_metting():
+    return jsonify("tested")
+
 
 if __name__ == '__main__':
    db.create_all()
