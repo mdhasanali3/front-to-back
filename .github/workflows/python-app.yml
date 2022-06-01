@@ -26,12 +26,9 @@ jobs:
     - name: Install dependencies()
       run: |
         python -m pip install --upgrade pip
-        python -m venv tenv
-        source ./tenv/bin/activate
-        python -m pip install --upgrade pip
         pip install flake8 pytest
-        if [ -f requirements.txt ]; then pip install -f -r requirements.txt; fi
+        pip install -r ./schedule-meetings/backend_flask/requirements.txt
         
     - name: Test with pytest
       run: |
-        python /schedule-meetings/backend_flask/pytest.py
+        python ./schedule-meetings/backend_flask/pytest.py
