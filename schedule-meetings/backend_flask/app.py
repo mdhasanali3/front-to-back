@@ -1,9 +1,8 @@
 from sqlite3 import Cursor
 from flask import Flask, Blueprint, jsonify, request, flash, url_for, redirect, render_template
-
 from flask_cors import CORS
 from requests import post
-from sqlalchemy import desc
+from sqlalchemy import desc, false
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin, LoginManager, login_user
 from flask_sqlalchemy import SQLAlchemy
@@ -210,6 +209,10 @@ def meetup_details():
     for item in description:
         description = item
     return render_template('meetup-details.html', title = title, description = description)
+
+def test_metting():
+    return 200
+
 
 if __name__ == '__main__':
    db.create_all()
