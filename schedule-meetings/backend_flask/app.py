@@ -1,6 +1,5 @@
 from sqlite3 import Cursor
 from flask import Flask, Blueprint, jsonify, request, flash, url_for, redirect, render_template
-
 from flask_cors import CORS
 from requests import post
 from sqlalchemy import desc
@@ -210,6 +209,7 @@ def meetup_details():
     for item in description:
         description = item
     return render_template('meetup-details.html', title = title, description = description)
+
 def test_metting():
     return jsonify("tested")
 
