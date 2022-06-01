@@ -1,6 +1,6 @@
 # import requests
 import subprocess
-from backend_flask.app import test_meeting
+from app import test_meeting
 # r = requests.get("http://google.com")       
 # print(r.status_code)
 
