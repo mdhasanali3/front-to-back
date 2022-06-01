@@ -210,7 +210,7 @@ def meetup_details():
         description = item
     return render_template('meetup-details.html', title = title, description = description)
 
-def test_metting():
+def testm():
     return 200
 
 
