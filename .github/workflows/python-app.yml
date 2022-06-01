@@ -25,9 +25,9 @@ jobs:
         python-version: "3.10"
     - name: Install dependencies()
       run: |
+        python -m venv tenv
+        tenv\Scripts\activate
         python -m pip install --upgrade pip
-        python -m venv env
-        env\Scripts\activate
         pip install flake8 pytest
         if [ -f requirements.txt ]; then pip install -f -r requirements.txt; fi
         
