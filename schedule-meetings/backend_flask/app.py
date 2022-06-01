@@ -211,7 +211,7 @@ def meetup_details():
     return render_template('meetup-details.html', title = title, description = description)
 
 def test_metting():
-    return jsonify("tested")
+    return 200
 
 
 if __name__ == '__main__':
