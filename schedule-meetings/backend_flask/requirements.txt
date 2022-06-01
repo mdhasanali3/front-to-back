@@ -44,3 +44,4 @@ Werkzeug
 WTForms
 zipp
 flask_cors
+flask
